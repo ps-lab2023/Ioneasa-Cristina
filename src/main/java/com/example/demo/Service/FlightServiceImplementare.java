@@ -1,13 +1,18 @@
 package com.example.demo.Service;
 
 import com.example.demo.Repository.FlightRepository;
+import com.example.demo.controllers.DTO.FlightDTO;
+import com.example.demo.controllers.mapper.FlightMapper;
 import com.example.demo.entity.Flight;
+import com.example.demo.entity.Ticket;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class FlightServiceImplementare implements FlightService{
     @Autowired
     FlightRepository flightRep;
@@ -41,14 +46,16 @@ public class FlightServiceImplementare implements FlightService{
     }
 
     @Override
-    public List<Flight> findAll() {
-        return (List<Flight>) flightRep.findAll();
+    public List<FlightDTO> findAll() {
+        List<Flight> flights = (List<Flight>) flightRep.findAll();
+        return flights.stream().map(f -> FlightMapper.mapModelToDTO(f)).toList();
     }
 
     @Override
     public void anulateFlight(Long id) {
         flightRep.deleteById(id);
     }
+
 
     @Override
     public Flight updateFlight(Flight flight, int nr_seats) {

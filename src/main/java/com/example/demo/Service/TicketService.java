@@ -12,5 +12,6 @@ public interface TicketService {
     Ticket findByNoTicket(Long number);
     List<Ticket> findByPassagerName(String passagerName);
     boolean deleteTicket(Long noTicket);
+
     Ticket modifyPrice(Ticket ticket, int price);
 }

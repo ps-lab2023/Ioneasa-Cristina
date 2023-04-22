@@ -3,9 +3,11 @@ package com.example.demo.Service;
 import com.example.demo.Repository.TicketRepository;
 import com.example.demo.entity.Ticket;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TicketServiceImplementare implements TicketService{
 
     @Autowired
@@ -26,8 +28,8 @@ public class TicketServiceImplementare implements TicketService{
 
     @Override
     public boolean deleteTicket(Long noTicket) {
-        ticketRep.deleteById(noTicket);
-        if(ticketRep.existsById(noTicket))
+        ticketRep.deleteByNoTicket(noTicket);
+        if(ticketRep.existsByNoTicket(noTicket))
             return false;
         else return true;
     }
@@ -38,4 +40,5 @@ public class TicketServiceImplementare implements TicketService{
         ticketRep.save(ticket);
         return ticket;
     }
+
 }

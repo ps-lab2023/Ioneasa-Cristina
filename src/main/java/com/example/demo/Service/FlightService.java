@@ -1,6 +1,8 @@
 package com.example.demo.Service;
 
+import com.example.demo.controllers.DTO.FlightDTO;
 import com.example.demo.entity.Flight;
+import com.example.demo.entity.Ticket;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -14,7 +16,7 @@ public interface FlightService {
     List<Flight> findByArrival(String arrival);
     List<Flight> findByDeparture(String departure);
     List<Flight> findByArrivalAndDeparture(String arrival, String departure);
-    List<Flight> findAll();
+    List<FlightDTO> findAll();
     void anulateFlight(Long id);
     Flight updateFlight(Flight flight, int nr_seats);
 }
