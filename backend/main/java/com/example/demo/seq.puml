@@ -1,0 +1,18 @@
+@startuml
+title Trainer Workout Management
+
+actor Trainer
+participant App
+database "Workout History" as workout_history
+
+Trainer -> App: Logs in
+App -> Trainer: Displays main menu
+Trainer -> App: Selects Workout Management feature
+App -> Trainer: Displays workout records
+Trainer -> App: Selects an option (Add, Edit, or Delete)
+App -> App: Validates Trainer access rights
+App -> Trainer: Prompts trainer for required information
+Trainer -> App: Enters required information
+App -> workout_history: Saves or updates workout record
+App -> Trainer: Confirms successful operation
+@enduml
